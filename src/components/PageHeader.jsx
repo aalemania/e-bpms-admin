@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { Container, Button } from "react-bootstrap";
+import { FiPlusCircle } from "react-icons/fi";
 
 function PageHeader({
   title = "",
@@ -14,8 +15,6 @@ function PageHeader({
   let history = useHistory();
 
   const redirectTo = (path) => history.push(path);
-
-  console.log(actionButtonAttributes);
 
   return (
     <Container fluid className="px-0">
@@ -33,6 +32,7 @@ function PageHeader({
             onClick={() => redirectTo(actionButtonAttributes.redirectTo)}
             className="ml-auto"
           >
+            <FiPlusCircle className="mr-2" />
             {actionButtonAttributes.title}
           </Button>
         )}
