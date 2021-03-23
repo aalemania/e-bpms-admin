@@ -24,7 +24,7 @@ function PageHeader({
         fluid
         className="page-header align-items-baseline d-flex px-0 "
       >
-        <h3>{title}</h3>
+        <h3 className="font-weight-bold">{title}</h3>
 
         {showActionButtons && (
           <Button
