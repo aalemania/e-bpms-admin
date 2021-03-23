@@ -14,6 +14,12 @@ const routes = [
     name: "Applications",
     component: ApplicationList,
   },
+  {
+    path: "/applications/create",
+    exact: true,
+    name: "New Application",
+    component: ApplicationCreate,
+  },
 ];
 
 export default routes;
