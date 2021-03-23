@@ -1,21 +1,7 @@
 {
-  "name": "@coreui/coreui-free-react-admin-template",
-  "version": "3.2.0",
-  "description": "CoreUI React Open Source Bootstrap 4 Admin Template",
-  "author": {
-    "name": "CoreUI",
-    "url": "https://coreui.io",
-    "github": "https://github.com/coreui",
-    "twitter": "https://twitter.com/core_ui"
-  },
-  "contributors": [
-    {
-      "name": "CoreUI Team",
-      "url": "https://github.com/orgs/coreui/people"
-    }
-  ],
-  "homepage": ".",
-  "copyright": "Copyright 2017-2020 creativeLabs Łukasz Holeczek",
+  "name": "qatar-building-permit-system-dashboard",
+  "version": "1.0.0",
+  "description": "Qatar building permit system admin dashboard",
   "license": "MIT",
   "private": true,
   "repository": {
@@ -41,11 +27,13 @@
     "react-app-polyfill": "^2.0.0",
     "react-bootstrap": "^1.5.2",
     "react-csv": "^2.0.3",
+    "react-data-table-component": "^6.11.7",
     "react-dom": "^17.0.1",
     "react-hook-form": "^6.15.5",
     "react-loader-spinner": "^4.0.0",
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
+    "react-user-avatar": "^1.10.0",
     "redux": "4.0.5"
   },
   "devDependencies": {
