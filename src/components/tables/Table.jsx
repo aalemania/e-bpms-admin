@@ -19,7 +19,7 @@ function Table({
 	return (
 		<DataTable
 			noHeader
-			striped
+			highlightOnHover
 			pagination={pagination}
 			columns={headers}
 			data={data}

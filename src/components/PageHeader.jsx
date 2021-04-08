@@ -18,7 +18,9 @@ function PageHeader({
 
 	return (
 		<Container fluid className="px-0">
-			<p className="text-muted mb-3">{breadcrumbStr}</p>
+			<p className="text-muted mb-3 d-none" style={{ fontSize: ".85rem" }}>
+				{breadcrumbStr}
+			</p>
 
 			<Container
 				fluid
@@ -29,9 +31,7 @@ function PageHeader({
 				{showActionButtons && (
 					<Button
 						variant="primary"
-						onClick={() =>
-							redirectTo(actionButtonAttributes.redirectTo)
-						}
+						onClick={() => redirectTo(actionButtonAttributes.redirectTo)}
 						className="ml-auto"
 					>
 						<FiPlusCircle className="mr-2" />

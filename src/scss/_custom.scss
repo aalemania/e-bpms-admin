@@ -288,3 +288,43 @@ form {
 .page-header {
 	margin-bottom: 1.75rem !important;
 }
+
+// Table header
+.table-header {
+	padding: 0 !important;
+
+	button {
+		color: #555 !important;
+		font-size: 0.75rem !important;
+		border: solid 1px #ddd !important;
+	}
+}
+
+// === REACT DATA TABLE COMPONENT ===
+.rdt_Table {
+	margin-top: 2rem !important;
+
+	.rdt_TableHead {
+		.rdt_TableHeadRow {
+			background: #eff2f7 !important;
+			border-bottom: 0 !important;
+		}
+	}
+	.rdt_TableHead * {
+		color: #555 !important;
+		font-weight: bold !important;
+		font-size: 0.8rem !important;
+	}
+
+	.rdt_TableRow {
+		padding: 0.85rem 1rem !important;
+		color: #999 !important;
+	}
+
+	.datatable_actionButtons {
+		button {
+			border: solid 1px #ddd !important;
+			font-size: 0.7rem !important;
+		}
+	}
+}
