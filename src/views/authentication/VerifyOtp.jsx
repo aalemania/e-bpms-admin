@@ -1,9 +1,9 @@
 import { Container, Card } from "react-bootstrap";
 
-import LoginForm from "./../../components/forms/authentications/LoginForm";
+import VerifyOtpForm from "./../../components/forms/authentications/VerifyOtpForm";
 
-const Login = () => {
-	document.title = "E-BPMS::Login";
+const VerifyOtp = () => {
+	document.title = "E-BPMS::Verify OTP";
 	return (
 		<Container
 			fluid
@@ -23,7 +23,7 @@ const Login = () => {
 							</h5>
 						</div>
 
-						<LoginForm />
+						<VerifyOtpForm />
 					</Card.Body>
 				</Card>
 			</div>
@@ -31,4 +31,4 @@ const Login = () => {
 	);
 };
 
-export default Login;
+export default VerifyOtp;

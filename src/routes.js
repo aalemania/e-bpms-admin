@@ -1,7 +1,12 @@
 import { Dashboard } from "./views/dashboard";
 
 // Authentication
-import { Login } from "./views/authentication";
+import {
+	Login,
+	ForgotPassword,
+	VerifyLoginOtp,
+	VerifyOtp,
+} from "./views/authentication";
 
 // Applications
 import { ApplicationList, ApplicationCreate } from "./views/applications/";
@@ -17,6 +22,24 @@ const routes = [
 		name: "Authentication Login",
 		component: Login,
 	},
+	{
+		path: "/auth/forgot-password",
+		exact: true,
+		name: "Authentication Forgot Password",
+		component: ForgotPassword,
+	},
+	{
+		path: "/auth/login/verify-otp",
+		exact: true,
+		name: "Authentication Login Verify OTP",
+		component: VerifyLoginOtp,
+	},
+	{
+		path: "/auth/verify-otp",
+		exact: true,
+		name: "Authentication Verify OTP",
+		component: VerifyOtp,
+	},
 
 	// Applications
 	{
@@ -30,6 +53,12 @@ const routes = [
 		exact: true,
 		name: "New Application",
 		component: ApplicationCreate,
+	},
+	{
+		path: "*",
+		exact: true,
+		name: "Page not found",
+		component: () => "No content",
 	},
 ];
 

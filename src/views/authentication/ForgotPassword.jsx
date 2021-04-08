@@ -1,9 +1,9 @@
 import { Container, Card } from "react-bootstrap";
 
-import LoginForm from "./../../components/forms/authentications/LoginForm";
+import ForgotPasswordForm from "./../../components/forms/authentications/ForgotPasswordForm";
 
 const Login = () => {
-	document.title = "E-BPMS::Login";
+	document.title = "E-BPMS::Forgot Password";
 	return (
 		<Container
 			fluid
@@ -23,7 +23,7 @@ const Login = () => {
 							</h5>
 						</div>
 
-						<LoginForm />
+						<ForgotPasswordForm />
 					</Card.Body>
 				</Card>
 			</div>

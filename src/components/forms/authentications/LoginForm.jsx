@@ -1,19 +1,24 @@
-import { Form, Button } from "react-bootstrap";
+import { useState } from "react";
+import { Form, Button, Alert } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 
-import AuthenticationService from "./../../../services/authentication.service";
+import AuthService from "./../../../services/authentication.service";
 
 const LoginForm = () => {
 	const { register, errors, handleSubmit } = useForm();
+	const [loading, setLoading] = useState(false);
 
 	const onSubmit = async (credentials) => {
 		if (Object.entries(errors).length === 0) {
-			console.log(credentials);
+			setLoading(true);
 
-			await AuthenticationService.login({
-				email: credentials.email,
-				password: credentials.password,
-			});
+			await AuthService.login(
+				{
+					email: credentials.email,
+					password: credentials.password,
+				},
+				setLoading
+			);
 		}
 
 		return;
@@ -22,12 +27,11 @@ const LoginForm = () => {
 	return (
 		<Form onSubmit={handleSubmit(onSubmit)}>
 			<Form.Group>
-				<Form.Label>Email</Form.Label>
 				<input
 					type="text"
 					name="email"
-					className="form-control"
-					placeholder="yourname@domain.com"
+					className={`form-control ${errors.email && "border-danger"}`}
+					placeholder="Email or username"
 					ref={register({ required: true })}
 				/>
 				{errors.email && (
@@ -36,12 +40,11 @@ const LoginForm = () => {
 			</Form.Group>
 
 			<Form.Group>
-				<Form.Label>Password</Form.Label>
 				<input
 					type="password"
 					name="password"
-					className="form-control"
-					placeholder="********"
+					className={`form-control ${errors.password && "border-danger"}`}
+					placeholder="Password"
 					ref={register({ required: true })}
 				/>
 				{errors.password && (
@@ -49,8 +52,20 @@ const LoginForm = () => {
 				)}
 			</Form.Group>
 
-			<div className="col-md-4 col-lg-6 mx-auto my-4">
-				<Button type="submit" variant="primary" className="px-3 py-2" block>
+			<Form.Group>
+				<Form.Group controlId="remember-me-checkbox">
+					<Form.Check type="checkbox" label="Remember me" />
+				</Form.Group>
+			</Form.Group>
+
+			<div className="my-4">
+				<Button
+					type="submit"
+					variant="primary"
+					className="px-3 py-3"
+					block
+					disabled={loading}
+				>
 					<span className="font-weight-bold">Sign In</span>
 				</Button>
 			</div>

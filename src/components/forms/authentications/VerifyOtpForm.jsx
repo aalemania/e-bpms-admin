@@ -1,12 +1,22 @@
+import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 
-const VerifyOtpForm = () => {
-	const { register, errors, handleSubmit } = useForm();
+import AuthService from "./../../../services/authentication.service";
 
-	const onSubmit = (data) => {
+const VerifyOtpForm = ({ verification_type = "account_verify" }) => {
+	const { register, errors, handleSubmit } = useForm();
+	const [loading, setLoading] = useState(false);
+
+	const onSubmit = async (data) => {
 		if (Object.entries(errors).length === 0) {
-			console.log(data);
+			if (verification_type === "account_verify") {
+				await AuthService.verifyUserOtp(data.otp, setLoading);
+
+				return;
+			}
+
+			await AuthService.verifyUserLoginOtp(data.otp, setLoading);
 		}
 
 		return;
@@ -14,24 +24,39 @@ const VerifyOtpForm = () => {
 
 	return (
 		<Form onSubmit={handleSubmit(onSubmit)}>
+			<Form.Label>
+				{verification_type === "account_verify"
+					? "Account Verify"
+					: "Login Verify"}{" "}
+				One-Time-Passcode
+			</Form.Label>
 			<Form.Group>
-				<Form.Label>One-Time-Passcode</Form.Label>
 				<input
 					type="text"
-					name="otp_code"
+					name="otp"
 					className="form-control"
-					placeholder="yourname@domain.com"
+					placeholder="ex. 645189"
 					ref={register({ required: true })}
 				/>
-				{errors.otp_code && (
-					<small className="text-danger">
-						This field is required
-					</small>
+				{errors.otp && (
+					<small className="text-danger">This field is required</small>
 				)}
 			</Form.Group>
 
-			<div className="col-md-4 col-lg-6 mx-auto my-4">
-				<Button variant="primary" className="px-3 py-2" block>
+			<small className="text-muted">
+				Please provide your e-mail address in the field above, once completed,
+				you will receive an e-email containing a one-time-password shortly. This
+				OTP will be used for the final step in resetting your account password.
+			</small>
+
+			<div className="my-4">
+				<Button
+					type="submit"
+					variant="primary"
+					className="px-3 py-2"
+					block
+					disabled={loading}
+				>
 					<span className="font-weight-bold">Submit</span>
 				</Button>
 			</div>

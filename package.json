@@ -37,7 +37,8 @@
     "react-router-dom": "^5.2.0",
     "react-user-avatar": "^1.10.0",
     "redux": "4.0.5",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "sweetalert2": "^10.16.0"
   },
   "devDependencies": {
     "auto-changelog": "~2.2.1",

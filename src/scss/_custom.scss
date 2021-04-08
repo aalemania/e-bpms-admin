@@ -3,7 +3,7 @@
 }
 
 html {
-	zoom: 0.95 !important;
+	// zoom: 0.95 !important;
 }
 
 .font-weight-med {
@@ -36,14 +36,25 @@ button:disabled {
 form {
 	.form-group {
 		.form-label {
+			color: #555 !important;
+			font-weight: 500 !important;
+		}
+
+		.form-check-label {
 			color: #777 !important;
-			font-weight: bold !important;
+			font-size: 0.8rem !important;
 		}
 
 		input.form-control,
 		select.form-control {
 			height: 50px !important;
 			font-size: 0.8rem !important;
+		}
+
+		input.form-control:focus,
+		select.form-control:focus {
+			box-shadow: none !important;
+			border: solid 1px #5665ae !important;
 		}
 	}
 }
@@ -82,10 +93,20 @@ form {
 .alert {
 	font-size: 0.8rem !important;
 	margin-bottom: 1rem !important;
+
+	p {
+		margin-bottom: 0 !important;
+	}
+}
+
+.alert {
+	padding-top: 1rem !important;
+	padding-bottom: 1rem !important;
 }
 
 .alert-primary {
-	background: #dde2fa !important;
+	color: #0c56b0 !important;
+	background-color: rgba(45, 116, 204, 0.18) !important;
 }
 
 .alert-secondary {
@@ -93,19 +114,23 @@ form {
 }
 
 .alert-success {
-	background: #d6f3e9 !important;
+	color: #34c38f !important;
+	background-color: rgba(52, 195, 143, 0.18) !important;
 }
 
 .alert-danger {
-	background: #fde1e1 !important;
+	color: #f46a6a !important;
+	background-color: rgba(244, 106, 106, 0.18) !important;
 }
 
 .alert-warning {
-	background: #fcf0db !important;
+	color: #f1b44c !important;
+	background-color: rgba(241, 180, 76, 0.18) !important;
 }
 
 .alert-info {
-	background: #dcedfc !important;
+	color: #109e93 !important;
+	background-color: rgba(90, 219, 209, 0.18) !important;
 }
 
 // Badge
@@ -222,8 +247,8 @@ form {
 	position: relative;
 
 	.authentication-card-container {
-		background: #ddd !important;
-		border-radius: 10px !important;
+		background: #f1f1f1 !important;
+		border-radius: 4px !important;
 	}
 
 	.bg-overlay {

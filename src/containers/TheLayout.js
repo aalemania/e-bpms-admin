@@ -2,16 +2,25 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import { TheContent, TheSidebar, TheFooter, TheHeader } from "./index";
-import { Login, Register } from "./../views/authentication";
+import {
+	Login,
+	Register,
+	ForgotPassword,
+	VerifyLoginOtp,
+	VerifyOtp,
+} from "./../views/authentication";
 
 const TheLayout = () => {
 	const location = useLocation();
 
 	const AuthenticationLayout = () => (
 		<Container fluid className="authentication-container">
-			<div className="bg-overlay d-none"></div>
-			{location.pathname.includes("login") && <Login />}
-			{location.pathname.includes("register") && <Register />}
+			<div className="bg-overlay"></div>
+			{location.pathname === "/auth/login" && <Login />}
+			{location.pathname === "/auth/register" && <Register />}
+			{location.pathname === "/auth/forgot-password" && <ForgotPassword />}
+			{location.pathname === "/auth/login/verify-otp" && <VerifyLoginOtp />}
+			{location.pathname === "/auth/verify-otp" && <VerifyOtp />}
 		</Container>
 	);
 
