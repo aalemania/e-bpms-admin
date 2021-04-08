@@ -14,6 +14,12 @@ const ApplicationRecordsService = {
 			if (setLoading) setLoading(false);
 		}
 	},
+
+	get: async (applicationId) => {},
+
+	add: async (data) => {},
+
+	destroy: async (applicationId) => {},
 };
 
 export default ApplicationRecordsService;
