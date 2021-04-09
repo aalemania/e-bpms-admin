@@ -26,9 +26,9 @@ function PageHeader({
 				fluid
 				className="page-header align-items-baseline d-flex px-0 "
 			>
-				<h3 className="font-weight-bold">{title}</h3>
+				<h3>{title}</h3>
 
-				{showActionButtons && (
+				{/* {showActionButtons && (
 					<Button
 						variant="primary"
 						onClick={() => redirectTo(actionButtonAttributes.redirectTo)}
@@ -37,7 +37,7 @@ function PageHeader({
 						<FiPlusCircle className="mr-2" />
 						{actionButtonAttributes.title}
 					</Button>
-				)}
+				)} */}
 			</Container>
 		</Container>
 	);

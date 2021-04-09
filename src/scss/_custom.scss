@@ -28,8 +28,45 @@ button:disabled {
 
 // Card
 .card {
-	border: 0 !important;
+	background-clip: border-box !important;
+	border: solid 1px #ebedf3 !important;
+	border-radius: 0.42rem !important;
 	box-shadow: 0px 0px 17 23px black !important;
+
+	.card-header {
+		padding-bottom: 0.25rem !important;
+
+		.table-filters {
+			.form-group > * {
+				font-size: 0.75rem !important;
+			}
+
+			.form-group {
+				small {
+					color: #b5b5c7 !important;
+				}
+
+				.form-control {
+					font-size: 0.75rem !important;
+					height: 38px !important;
+					padding: 2px 8px !important;
+					border-color: hsl(0, 0%, 80%) !important;
+					border-radius: 4px !important;
+					border-style: solid !important;
+					border-width: 1px !important;
+				}
+
+				.form-control:focus {
+					box-shadow: none !important;
+					border: solid 1px #5665ae !important;
+				}
+			}
+		}
+	}
+
+	.card-header {
+		border-color: #f1f1f1 !important;
+	}
 }
 
 // Form
@@ -181,14 +218,18 @@ form {
 // Navbar
 .c-header {
 	border: 0 !important;
+	border-bottom: solid 1px #eee !important;
 	padding: 0.45rem 1rem !important;
 	-webkit-box-shadow: 0px 0px 22px -1px rgba(85, 85, 85, 0.05) !important;
 	-moz-box-shadow: 0px 0px 22px -1px rgba(85, 85, 85, 0.05) !important;
 	box-shadow: 0px 0px 22px -1px rgba(85, 85, 85, 0.05) !important;
 
 	.c-header-nav {
+		.c-header-nav-link {
+			font-size: 0.8rem !important;
+		}
 		.c-header-nav-items {
-			font-size: 0.9rem !important;
+			font-size: 0.8rem !important;
 
 			.dropdown-item {
 				font-size: 0.8rem !important;
@@ -200,31 +241,34 @@ form {
 // Sidebar
 .c-sidebar {
 	.c-sidebar-brand {
-		background: #040849 !important;
+		background: #1e1e2d !important;
 		padding-top: 1.35rem !important;
 		padding-bottom: 1.35rem !important;
 	}
 
 	.c-sidebar-nav {
-		background-image: linear-gradient(#003162, #001a3b) !important;
-		// background: #040849 !important;
+		background: #1e1e2d !important;
 		padding-top: 1rem !important;
 		padding-bottom: 1rem !important;
 
 		.c-sidebar-nav-item {
 			.c-sidebar-nav-link {
+				color: #ddd !important;
+				font-size: 0.8rem !important;
 				padding-top: 1rem !important;
 				padding-bottom: 1rem !important;
+				transition: 0.3s ease !important;
 			}
 			.c-sidebar-nav-link:hover {
-				background: #3c4573 !important;
+				color: #fff !important;
+				background: #1a1a27 !important;
 			}
 		}
 	}
 
 	.c-sidebar-minimizer {
 		color: #fff !important;
-		background: #040849 !important;
+		background: #1a1a27 !important;
 	}
 }
 
@@ -273,7 +317,13 @@ form {
 }
 
 .page-header {
-	margin-bottom: 2rem !important;
+	margin-bottom: 1rem !important;
+
+	h3 {
+		color: #655057 !important;
+		font-size: 18px !important;
+		text-transform: uppercase !important;
+	}
 }
 
 .header-container {
@@ -302,23 +352,26 @@ form {
 
 // === REACT DATA TABLE COMPONENT ===
 .rdt_Table {
-	margin-top: 2rem !important;
-
 	.rdt_TableHead {
 		.rdt_TableHeadRow {
-			background: #eff2f7 !important;
-			border-bottom: 0 !important;
+			border-bottom: solid 2px #ebedf3 !important;
 		}
 	}
 	.rdt_TableHead * {
-		color: #555 !important;
-		font-weight: bold !important;
-		font-size: 0.8rem !important;
+		color: #181c67 !important;
+		font-size: 0.75rem !important;
 	}
 
 	.rdt_TableRow {
-		padding: 0.85rem 1rem !important;
+		font-size: 0.75rem !important;
+		padding: 1rem 0 !important;
 		color: #999 !important;
+		border-bottom: 1px solid #ebedf3 !important;
+		transition: 0.3s ease !important;
+	}
+
+	.rdt_TableRow:hover {
+		background: #fcfcfc !important;
 	}
 
 	.datatable_actionButtons {

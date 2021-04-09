@@ -2,6 +2,8 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import DataTable from "react-data-table-component";
 
+import TableLoader from "./TableLoader";
+
 function Table({
 	headers = [],
 	data = [],
@@ -19,11 +21,11 @@ function Table({
 	return (
 		<DataTable
 			noHeader
-			highlightOnHover
 			pagination={pagination}
 			columns={headers}
 			data={data}
 			progressPending={loading}
+			progressComponent={<TableLoader />}
 			noDataComponent={TableNoDataPlaceholder}
 		/>
 	);

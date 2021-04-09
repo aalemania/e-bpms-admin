@@ -6,8 +6,7 @@ import { fetchApplications } from "./../redux/modules/applications";
 const ApplicationRecordsService = {
 	getAll: async (search = "", setLoading) => {
 		try {
-			let response = await httpClient.get("/application-records");
-			console.log(response.data);
+			let response = await httpClient.get(`/application-records?q=${search}`);
 			store.dispatch(fetchApplications(response.data));
 		} catch (err) {
 		} finally {
