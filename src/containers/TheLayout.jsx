@@ -8,7 +8,7 @@ import {
 	ForgotPassword,
 	VerifyLoginOtp,
 	VerifyOtp,
-} from "./../views/authentication";
+} from "../views/authentication";
 
 const TheLayout = () => {
 	const location = useLocation();

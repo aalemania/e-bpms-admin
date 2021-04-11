@@ -7,7 +7,7 @@ import {
 } from "@coreui/react";
 import CIcon from "@coreui/icons-react";
 
-import AuthService from "./../services/authentication.service";
+import AuthService from "../services/authentication.service";
 
 const TheHeaderDropdown = () => {
 	return (

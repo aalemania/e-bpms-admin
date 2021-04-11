@@ -4,9 +4,12 @@ import { httpClient } from "./../api";
 import { fetchApplications } from "./../redux/modules/applications";
 
 const ApplicationRecordsService = {
-	getAll: async (search = "", setLoading) => {
+	getAll: async ({ search = "", status = "", payment_status = "", engineer_category = "" }, setLoading) => {
 		try {
-			let response = await httpClient.get(`/application-records?q=${search}`);
+			let response = await httpClient.get(
+				`/application-records?q=${search}&status=${status}&payment_status=${payment_status}&engineer_category=${engineer_category}`
+			);
+
 			store.dispatch(fetchApplications(response.data));
 		} catch (err) {
 		} finally {

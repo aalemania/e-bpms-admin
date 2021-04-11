@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form, Button, Alert } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 
 import AuthService from "./../../../services/authentication.service";
@@ -34,9 +34,7 @@ const LoginForm = () => {
 					placeholder="Email or username"
 					ref={register({ required: true })}
 				/>
-				{errors.email && (
-					<small className="text-danger">This field is required</small>
-				)}
+				{errors.email && <small className="text-danger">This field is required</small>}
 			</Form.Group>
 
 			<Form.Group>
@@ -47,9 +45,7 @@ const LoginForm = () => {
 					placeholder="Password"
 					ref={register({ required: true })}
 				/>
-				{errors.password && (
-					<small className="text-danger">This field is required</small>
-				)}
+				{errors.password && <small className="text-danger">This field is required</small>}
 			</Form.Group>
 
 			<Form.Group>
@@ -59,13 +55,7 @@ const LoginForm = () => {
 			</Form.Group>
 
 			<div className="my-4">
-				<Button
-					type="submit"
-					variant="primary"
-					className="px-3 py-3"
-					block
-					disabled={loading}
-				>
+				<Button type="submit" variant="primary" className="px-3 py-3" block disabled={loading}>
 					<span className="font-weight-bold">Sign In</span>
 				</Button>
 			</div>

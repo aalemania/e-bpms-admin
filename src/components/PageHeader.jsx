@@ -1,43 +1,15 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
-import { Container, Button } from "react-bootstrap";
-import { FiPlusCircle } from "react-icons/fi";
+import { Container } from "react-bootstrap";
 
-function PageHeader({
-	title = "",
-	showActionButtons = false,
-	actionButtonAttributes = {
-		title: "",
-		redirectTo: "",
-	},
-	breadcrumbStr = "",
-}) {
-	let history = useHistory();
-
-	const redirectTo = (path) => history.push(path);
-
+function PageHeader({ title = "", breadcrumbStr = "" }) {
 	return (
 		<Container fluid className="px-0">
 			<p className="text-muted mb-3 d-none" style={{ fontSize: ".85rem" }}>
 				{breadcrumbStr}
 			</p>
 
-			<Container
-				fluid
-				className="page-header align-items-baseline d-flex px-0 "
-			>
+			<Container fluid className="page-header align-items-baseline d-flex px-0 ">
 				<h3>{title}</h3>
-
-				{/* {showActionButtons && (
-					<Button
-						variant="primary"
-						onClick={() => redirectTo(actionButtonAttributes.redirectTo)}
-						className="ml-auto"
-					>
-						<FiPlusCircle className="mr-2" />
-						{actionButtonAttributes.title}
-					</Button>
-				)} */}
 			</Container>
 		</Container>
 	);

@@ -1,143 +1,34 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useSelector } from "react-redux";
-import {
-	Container,
-	Card,
-	Form,
-	Col,
-	Badge,
-	ButtonGroup,
-	Button,
-} from "react-bootstrap";
-import { FiEdit, FiTrash2, FiEye } from "react-icons/fi";
+import { Container, Card, Form, Col, Button, InputGroup } from "react-bootstrap";
+import { FiXCircle, FiSearch } from "react-icons/fi";
 import Select from "react-select";
 
+import {
+	filterByApplicationStatusOptions,
+	filterByPaymentStatusOptions,
+	filterByEngineerCategoryOptions,
+} from "../../reusables/dropdown-options.constant";
+import { application_records_table_header } from "./../../components/tables/headers";
 import ApplicationsService from "./../../services/applications.service";
 import PageHeader from "./../../components/PageHeader";
 import Table from "./../../components/tables/Table";
 
-const setPaymentStatus = (paymentLength) => {
-	switch (paymentLength) {
-		case 1:
-			return <Badge variant="primary">Service Fees Downpayment (50%)</Badge>;
-
-		case 2:
-			return <Badge variant="info">Service Fees Downpayment (Full)</Badge>;
-
-		case 3:
-			return <Badge variant="success">Building Permit Fees (Paid)</Badge>;
-
-		default:
-			return <Badge variant="danger">No Payments (Pending)</Badge>;
-	}
-};
-
-const filterByStatusOptions = [
-	{
-		label: "Pending",
-		value: "pending",
-	},
-	{
-		label: "On-hold",
-		value: "on-hold",
-	},
-	{
-		label: "Approved",
-		value: "approved",
-	},
-	{
-		label: "Declined",
-		value: "declined",
-	},
-];
-
-const filterByPaymentStatusOptions = [
-	{
-		label: "Service Fees Downpayment (50%)",
-		value: "services-dp-50%",
-	},
-	{
-		label: "Service Fees Downpayment (Full)",
-		value: "services-dp-completion",
-	},
-	{
-		label: "Building Permit Fees (Paid)",
-		value: "building-permit-fees",
-	},
-	{
-		label: "To Pay",
-		value: "to-pau",
-	},
-];
-
-const filterByEngineerCategoryOptions = [
-	{
-		label: "Category",
-		value: "category",
-	},
-];
-
 function List() {
 	document.title = "E-BPMS::Applications";
 
-	const applications = useSelector(
-		(state) => state.applicationsReducer.applications
-	);
+	const applications = useSelector((state) => state.applicationsReducer.applications);
 
+	const searchRef = useRef(null);
+
+	const [filters, setFilters] = useState({
+		status: "",
+		payment_status: "",
+		engineer_category: "",
+	});
+	const [selectedData, setSelectedData] = useState([]);
 	const [search, setSearch] = useState("");
 	const [loading, setLoading] = useState(true);
-
-	let actionButtonAttributes = {
-		title: "New Application",
-		redirectTo: "/applications/create",
-	};
-
-	const tableHeader = useMemo(
-		() => [
-			{
-				name: "Record ID",
-				selector: "uuid",
-				sortable: false,
-			},
-			{
-				name: "Project Name",
-				selector: "project_data.name",
-				sortable: false,
-			},
-			{
-				name: "Payment Status",
-				selector: "payment",
-				sortable: false,
-				cell: (row) => setPaymentStatus(row.payment.length),
-			},
-
-			{
-				name: "Status",
-				selector: "id",
-				sortable: false,
-				cell: (row) => <Badge variant="success">Approved</Badge>,
-			},
-			{
-				name: "Actions",
-				selector: "id",
-				sortable: false,
-				cell: (row) => (
-					<ButtonGroup className="datatable_actionButtons">
-						<Button size="sm" variant="light">
-							<FiEdit className="mr-1" /> Manage
-						</Button>
-						<Button size="sm" variant="light">
-							<FiEye className="mr-1" /> View Receipts
-						</Button>
-						<Button size="sm" variant="light">
-							<FiTrash2 className="mr-1" /> Delete
-						</Button>
-					</ButtonGroup>
-				),
-			},
-		],
-		[]
-	);
 
 	const getProducts = (search) => {
 		setLoading(true);
@@ -145,23 +36,36 @@ function List() {
 	};
 
 	useEffect(() => {
-		getProducts(search);
-	}, [search]);
+		getProducts({
+			search: search,
+			...filters,
+		});
+	}, [search, filters]);
 
-	const handleFilterByStatus = (value) => console.log(value);
+	const handleResetFilter = () => {
+		setFilters({
+			status: "",
+			payment_status: "",
+			engineer_category: "",
+		});
+	};
 
-	const handleFilterByPaymentStatus = (value) => console.log(value);
+	const handleSearch = (e) => {
+		e.preventDefault();
+		setSearch(searchRef.current.value);
+	};
 
-	const handleFilterByEngineerCategory = (value) => console.log(value);
+	const handleFilterByStatus = (status) => setFilters({ ...filters, status: status.value });
+
+	const handleFilterByPaymentStatus = (payment_status) => setFilters({ ...filters, payment_status: payment_status.value });
+
+	const handleFilterByEngineerCategory = (engineer_category) => setFilters({ ...filters, engineer_category: engineer_category.value });
+
+	const handleSelectedRows = (selectedRows) => setSelectedData(selectedRows);
 
 	return (
 		<Container fluid className="px-0">
-			<PageHeader
-				title="Applications"
-				breadcrumbStr="Applications \ List"
-				showActionButtons={true}
-				actionButtonAttributes={actionButtonAttributes}
-			/>
+			<PageHeader title="Applications" breadcrumbStr="Applications \ List" />
 
 			<Card>
 				<Card.Header>
@@ -171,8 +75,10 @@ function List() {
 								<Col>
 									<Form.Group>
 										<Select
-											options={filterByStatusOptions}
+											isSearchable={false}
+											options={filterByApplicationStatusOptions}
 											onChange={handleFilterByStatus}
+											defaultValue={[{ label: "All", value: "" }]}
 										/>
 										<div>
 											<small>Filter by Status</small>
@@ -183,8 +89,10 @@ function List() {
 								<Col>
 									<Form.Group>
 										<Select
+											isSearchable={false}
 											options={filterByPaymentStatusOptions}
 											onChange={handleFilterByPaymentStatus}
+											defaultValue={[{ label: "All", value: "" }]}
 										/>
 										<div>
 											<small>Filter by Payment Status</small>
@@ -192,11 +100,13 @@ function List() {
 									</Form.Group>
 								</Col>
 
-								<Col>
+								<Col className="d-none">
 									<Form.Group>
 										<Select
+											isSearchable={false}
 											options={filterByEngineerCategoryOptions}
 											onChange={handleFilterByEngineerCategory}
+											defaultValue={[{ label: "All", value: "" }]}
 										/>
 										<div>
 											<small>Filter by Engineer Category</small>
@@ -204,26 +114,31 @@ function List() {
 									</Form.Group>
 								</Col>
 							</Form.Row>
+
+							{(filters.status !== "" || filters.payment_status !== "") && (
+								<div className="pt-2">
+									<Button variant="danger" size="sm" onClick={handleResetFilter}>
+										<FiXCircle className="mr-1" /> <small>Clear Filters</small>
+									</Button>
+								</div>
+							)}
 						</Form>
 
-						<Form className="col-lg-6">
-							<Form.Group className="col-lg-6 px-0 ml-auto">
-								<input
-									type="text"
-									className="form-control"
-									placeholder="Search ..."
-									onChange={(e) => setSearch(e.target.value)}
-								/>
-								<div>
-									<small>Search in all fields</small>
-								</div>
-							</Form.Group>
+						<Form className="col-lg-6 px-0" onSubmit={handleSearch}>
+							<InputGroup className="col-lg-6 ml-auto">
+								<input className="form-control" placeholder="Search ..." ref={searchRef} />
+								<InputGroup.Append className="pl-1">
+									<Button variant="light" onClick={handleSearch}>
+										<FiSearch />
+									</Button>
+								</InputGroup.Append>
+							</InputGroup>
 						</Form>
 					</div>
 				</Card.Header>
 
 				<Card.Body>
-					<Table headers={tableHeader} data={applications} loading={loading} />
+					<Table headers={application_records_table_header} data={applications} loading={loading} handleSelectedRows={handleSelectedRows} />
 				</Card.Body>
 			</Card>
 		</Container>

@@ -41,12 +41,14 @@ button:disabled {
 				font-size: 0.75rem !important;
 			}
 
-			.form-group {
+			.form-group,
+			.input-group {
 				small {
 					color: #b5b5c7 !important;
 				}
 
-				.form-control {
+				.form-control,
+				.input-group-append button {
 					font-size: 0.75rem !important;
 					height: 38px !important;
 					padding: 2px 8px !important;
@@ -350,16 +352,23 @@ form {
 	}
 }
 
-// === REACT DATA TABLE COMPONENT ===
+// REACT DATA TABLE COMPONENT
 .rdt_Table {
 	.rdt_TableHead {
 		.rdt_TableHeadRow {
 			border-bottom: solid 2px #ebedf3 !important;
+
+			.rdt_TableCol {
+				color: #181c67 !important;
+				font-size: 0.75rem !important;
+				transition: 0.3s ease !important;
+			}
+
+			.rdt_TableCol *:hover {
+				color: #5d9cff !important;
+				cursor: pointer !important;
+			}
 		}
-	}
-	.rdt_TableHead * {
-		color: #181c67 !important;
-		font-size: 0.75rem !important;
 	}
 
 	.rdt_TableRow {
@@ -378,6 +387,12 @@ form {
 		button {
 			border: solid 1px #ddd !important;
 			font-size: 0.7rem !important;
+			margin: 0 5px !important;
 		}
 	}
+}
+
+// UserAvatar
+.UserAvatar {
+	color: #fff !important;
 }
