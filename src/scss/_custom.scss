@@ -2,10 +2,6 @@
 	font-family: Poppins !important;
 }
 
-html {
-	// zoom: 0.95 !important;
-}
-
 .font-weight-med {
 	font-weight: 400 !important;
 }
@@ -130,7 +126,7 @@ form {
 
 // Alert
 .alert {
-	font-size: 0.8rem !important;
+	font-size: 0.75rem !important;
 	margin-bottom: 1rem !important;
 
 	p {
@@ -141,35 +137,46 @@ form {
 .alert {
 	padding-top: 1rem !important;
 	padding-bottom: 1rem !important;
+	border-radius: 5px !important;
+
+	small {
+		font-weight: 500 !important;
+	}
 }
 
 .alert-primary {
-	color: #0c56b0 !important;
-	background-color: rgba(45, 116, 204, 0.18) !important;
+	color: #fff !important;
+	background-color: #3699ff !important;
 }
 
 .alert-secondary {
-	background: #e3e4e8 !important;
+	background: #f1f1f1 !important;
+	background: #181c32 !important;
 }
 
 .alert-success {
-	color: #34c38f !important;
-	background-color: rgba(52, 195, 143, 0.18) !important;
+	color: #fff !important;
+	background-color: #1bc5bd !important;
 }
 
 .alert-danger {
-	color: #f46a6a !important;
-	background-color: rgba(244, 106, 106, 0.18) !important;
+	color: #fff !important;
+	background-color: #f64e60 !important;
 }
 
 .alert-warning {
-	color: #f1b44c !important;
-	background-color: rgba(241, 180, 76, 0.18) !important;
+	color: #fff !important;
+	background-color: #ffa800 !important;
 }
 
 .alert-info {
-	color: #109e93 !important;
-	background-color: rgba(90, 219, 209, 0.18) !important;
+	color: #fff !important;
+	background-color: #8950fc !important;
+}
+
+.alert-light {
+	color: #666 !important;
+	background: #e4e6ef !important;
 }
 
 // Badge
