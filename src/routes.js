@@ -1,15 +1,10 @@
 import { Dashboard } from "./views/dashboard";
 
 // Authentication
-import {
-	Login,
-	ForgotPassword,
-	VerifyLoginOtp,
-	VerifyOtp,
-} from "./views/authentication";
+import { Login, ForgotPassword, VerifyLoginOtp, VerifyOtp } from "./views/authentication";
 
 // Applications
-import { ApplicationList, ApplicationCreate } from "./views/applications/";
+import { ApplicationList, ApplicationCreate, ApplicationShow } from "./views/applications/";
 
 const routes = [
 	// Dashboard
@@ -54,6 +49,14 @@ const routes = [
 		name: "New Application",
 		component: ApplicationCreate,
 	},
+	{
+		path: "/applications/:uuid/show",
+		exact: true,
+		name: "View Application",
+		component: ApplicationShow,
+	},
+
+	// Page not found
 	{
 		path: "*",
 		exact: true,

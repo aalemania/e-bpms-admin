@@ -1,9 +1,4 @@
-import {
-	FETCH_APPLICATIONS,
-	GET_APPLICATION,
-	ADD_APPLICATION,
-	DELETE_APPLICATION,
-} from "./types";
+import { FETCH_APPLICATIONS, GET_APPLICATION, ADD_APPLICATION, DELETE_APPLICATION } from "./types";
 
 const initialState = {
 	applications: [],
@@ -16,6 +11,18 @@ export default function applicationsReducers(state = initialState, action) {
 			return {
 				...state,
 				applications: action.payload,
+			};
+
+		case GET_APPLICATION:
+			return {
+				...state,
+				application: action.payload,
+			};
+
+		case ADD_APPLICATION:
+			return {
+				...state,
+				applications: [...state.applications, action.payload],
 			};
 
 		default:

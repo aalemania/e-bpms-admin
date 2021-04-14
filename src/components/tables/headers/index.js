@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 import UserAvatar from "react-user-avatar";
@@ -56,12 +57,11 @@ export const application_records_table_header = [
 		sortable: false,
 		cell: (row) => (
 			<div className="datatable_actionButtons">
-				<Button size="sm" variant="light">
-					<FiEdit />
-				</Button>
-				<Button size="sm" variant="light">
-					<FiTrash2 />
-				</Button>
+				<Link to={`/applications/${row.uuid}/show`}>
+					<Button size="sm" variant="light">
+						<FiEdit className="mr-1" /> Manage
+					</Button>
+				</Link>
 			</div>
 		),
 	},

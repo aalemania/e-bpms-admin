@@ -32,6 +32,18 @@ button:disabled {
 	.card-header {
 		padding-bottom: 0.25rem !important;
 
+		p,
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			color: #777 !important;
+			font-weight: normal !important;
+			margin-bottom: 0.35rem !important;
+		}
+
 		.table-filters {
 			.form-group > * {
 				font-size: 0.75rem !important;
@@ -68,6 +80,7 @@ button:disabled {
 }
 
 // Form
+
 form {
 	.form-group {
 		.form-label {
@@ -91,6 +104,18 @@ form {
 			box-shadow: none !important;
 			border: solid 1px #5665ae !important;
 		}
+	}
+}
+
+form.normal-form {
+	.form-label {
+		color: #999 !important;
+	}
+
+	input.form-control,
+	select.form-control {
+		height: 35px !important;
+		font-size: 0.8rem !important;
 	}
 }
 

@@ -42,6 +42,10 @@ function List() {
 		});
 	}, [search, filters]);
 
+	useState(() => {
+		console.log(selectedData);
+	}, [selectedData]);
+
 	const handleResetFilter = () => {
 		setFilters({
 			status: "",

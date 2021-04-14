@@ -1,7 +1,7 @@
 import store from "./../redux/reduxStore";
 
 import { httpClient } from "./../api";
-import { fetchApplications } from "./../redux/modules/applications";
+import { fetchApplications, getApplication } from "./../redux/modules/applications";
 import { setAlert } from "./../redux/modules/alerts";
 
 const ApplicationRecordsService = {
@@ -13,15 +13,23 @@ const ApplicationRecordsService = {
 
 			store.dispatch(fetchApplications(response.data));
 		} catch (err) {
-			if (err.response.status === 500) {
-				store.dispatch(setAlert({ show: true, variant: "danger", message: "Failed to fetch data, something went wrong" }));
-			}
+			store.dispatch(setAlert({ show: true, variant: "danger", message: "Failed to fetch data, something went wrong" }));
 		} finally {
 			if (setLoading) setLoading(false);
 		}
 	},
 
-	get: async (applicationId) => {},
+	get: async (applicationUuid, setLoading) => {
+		try {
+			let response = await httpClient.get(`/application-records/get-by-uuid/${applicationUuid}`);
+
+			store.dispatch(getApplication(response.data));
+		} catch (err) {
+			store.dispatch(setAlert({ show: true, variant: "danger", message: "Failed to fetch data, something went wrong" }));
+		} finally {
+			if (setLoading) setLoading(false);
+		}
+	},
 
 	add: async (data) => {},
 

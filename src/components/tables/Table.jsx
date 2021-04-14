@@ -6,10 +6,12 @@ import DataTable from "react-data-table-component";
 import TableLoader from "./TableLoader";
 
 function Table({ headers = [], data = [], pagination = true, loading = false, handleSelectedRows = () => null }) {
+	const handleReloadPage = () => window.location.reload();
+
 	const TableNoDataPlaceholder = (
 		<Container className="text-center py-5">
 			<h6 className="text-muted">No data available</h6>
-			<Button variant="secondary" size="sm" className="mt-2">
+			<Button variant="secondary" size="sm" className="mt-2" onClick={handleReloadPage}>
 				<FiRotateCw className="mr-2" />
 				<small>Reload page</small>
 			</Button>

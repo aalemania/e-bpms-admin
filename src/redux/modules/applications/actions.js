@@ -1,9 +1,4 @@
-import {
-	FETCH_APPLICATIONS,
-	GET_APPLICATION,
-	ADD_APPLICATION,
-	DELETE_APPLICATION,
-} from "./types";
+import { FETCH_APPLICATIONS, GET_APPLICATION, ADD_APPLICATION, DELETE_APPLICATION } from "./types";
 
 export const fetchApplications = (payload) => (dispatch) => {
 	dispatch({ type: FETCH_APPLICATIONS, payload: payload });
