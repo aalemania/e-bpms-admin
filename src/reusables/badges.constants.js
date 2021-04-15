@@ -2,13 +2,13 @@ import { Badge } from "react-bootstrap";
 
 export const setPaymentStatusBadge = (paymentLength) => {
 	switch (paymentLength) {
-		case 1:
+		case "services-dp-50%":
 			return <Badge variant="primary">Service Fees Downpayment (50%)</Badge>;
 
-		case 2:
+		case "services-db-completion":
 			return <Badge variant="info">Service Fees Downpayment (Full)</Badge>;
 
-		case 3:
+		case "buidling-permit-fees":
 			return <Badge variant="success">Building Permit Fees (Paid)</Badge>;
 
 		default:

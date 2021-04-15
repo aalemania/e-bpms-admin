@@ -39,7 +39,7 @@ export const application_records_table_header = [
 		name: "Payment Status",
 		selector: "payment",
 		sortable: false,
-		cell: (row) => setPaymentStatusBadge(row.payments.length),
+		cell: (row) => setPaymentStatusBadge(row.payment_status),
 	},
 	{
 		name: "Date Submitted",

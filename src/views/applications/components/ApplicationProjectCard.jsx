@@ -1,20 +1,26 @@
 import React from "react";
 import { Card, Form, Col, Button } from "react-bootstrap";
 
-function ApplicationApplicantCard({ data, user }) {
-	const formatUserName = (user) => {
-		const { first_name, last_name } = user;
-
-		return first_name + " " + last_name;
-	};
-
+function ApplicationProjectCard({ data }) {
 	return (
 		<Card className="mb-3">
 			<Card.Header>
-				<p>Applicant Data</p>
+				<p>Project Data</p>
 			</Card.Header>
 			<Card.Body>
 				<Form className="normal-form">
+					<Form.Group>
+						<Form.Row>
+							<Col lg={2}>
+								<Form.Label>Type</Form.Label>
+							</Col>
+
+							<Col lg={10}>
+								<input className="form-control" defaultValue={data.type} />
+							</Col>
+						</Form.Row>
+					</Form.Group>
+
 					<Form.Group>
 						<Form.Row>
 							<Col lg={2}>
@@ -22,7 +28,7 @@ function ApplicationApplicantCard({ data, user }) {
 							</Col>
 
 							<Col lg={10}>
-								<input className="form-control" defaultValue={formatUserName(user)} readOnly />
+								<input className="form-control" defaultValue={data.name} />
 							</Col>
 						</Form.Row>
 					</Form.Group>
@@ -30,11 +36,11 @@ function ApplicationApplicantCard({ data, user }) {
 					<Form.Group>
 						<Form.Row>
 							<Col lg={2}>
-								<Form.Label>Type of applicant</Form.Label>
+								<Form.Label>No. of floors</Form.Label>
 							</Col>
 
 							<Col lg={10}>
-								<input className="form-control" defaultValue={data.type_of_applicant} />
+								<input className="form-control" defaultValue={data.no_of_floors} />
 							</Col>
 						</Form.Row>
 					</Form.Group>
@@ -42,23 +48,11 @@ function ApplicationApplicantCard({ data, user }) {
 					<Form.Group>
 						<Form.Row>
 							<Col lg={2}>
-								<Form.Label>License #</Form.Label>
+								<Form.Label>Others</Form.Label>
 							</Col>
 
 							<Col lg={10}>
-								<input className="form-control" defaultValue={data.type_of_applicant} />
-							</Col>
-						</Form.Row>
-					</Form.Group>
-
-					<Form.Group>
-						<Form.Row>
-							<Col lg={2}>
-								<Form.Label>Mobile #</Form.Label>
-							</Col>
-
-							<Col lg={10}>
-								<input className="form-control" defaultValue={data.type_of_applicant} />
+								<input className="form-control" defaultValue={data.others} />
 							</Col>
 						</Form.Row>
 					</Form.Group>
@@ -74,4 +68,4 @@ function ApplicationApplicantCard({ data, user }) {
 	);
 }
 
-export default ApplicationApplicantCard;
+export default ApplicationProjectCard;

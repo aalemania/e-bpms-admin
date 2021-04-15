@@ -5,7 +5,7 @@ function ApplicationPropertyCard({ data }) {
 	return (
 		<Card className="mb-3">
 			<Card.Header>
-				<p>Appliction Applicant Data</p>
+				<p>Applicant Data</p>
 			</Card.Header>
 			<Card.Body>
 				<Form className="normal-form">

@@ -33,7 +33,7 @@ const ApplicationRecordsService = {
 
 	add: async (data) => {},
 
-	destroy: async (applicationId) => {},
+	delete: async (applicationId) => {},
 };
 
 export default ApplicationRecordsService;

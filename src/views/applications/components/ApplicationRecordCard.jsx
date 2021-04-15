@@ -1,13 +1,13 @@
 import React from "react";
 import { Card, Form, Col } from "react-bootstrap";
 
-import { setPaymentStatusStr } from "./../../../reusables/status.constants";
+import { setPaymentStatusBadge } from "./../../../reusables/badges.constants";
 
 function ApplicationRecordCard({ data }) {
 	return (
 		<Card className="mb-3">
 			<Card.Header>
-				<p>Appliction Record Data</p>
+				<p>Record Data</p>
 			</Card.Header>
 			<Card.Body>
 				<Form className="normal-form">
@@ -41,9 +41,7 @@ function ApplicationRecordCard({ data }) {
 								<Form.Label>Payment Status</Form.Label>
 							</Col>
 
-							<Col lg={10}>
-								<input className="form-control" defaultValue={setPaymentStatusStr(data.payment_status)} readOnly />
-							</Col>
+							<Col lg={10}>{setPaymentStatusBadge(data.payment_status)}</Col>
 						</Form.Row>
 					</Form.Group>
 				</Form>
