@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 
-function PageHeader({ title = "", breadcrumbStr = "" }) {
+function PageHeader({ title = "", newDataButtonAttr = {}, breadcrumbStr = "" }) {
 	return (
 		<Container fluid className="px-0">
 			<p className="text-muted mb-3 d-none" style={{ fontSize: ".85rem" }}>

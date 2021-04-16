@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import { FiEdit, FiTrash2 } from "react-icons/fi";
+import { FiEdit, FiTrash2, FiFileText } from "react-icons/fi";
 import UserAvatar from "react-user-avatar";
 import Moment from "react-moment";
 
-import { setPaymentStatusBadge, setApplicationStatusBadge } from "./../../../reusables/badges.constants";
+import { isPaidStatusBadge, setPaymentStatusBadge, setApplicationStatusBadge } from "./../../../reusables/badges.constants";
 
 // APPLICATION RECORDS
 export const application_records_table_header = [
@@ -60,6 +60,48 @@ export const application_records_table_header = [
 				<Link to={`/applications/${row.uuid}/show`}>
 					<Button size="sm" variant="light">
 						<FiEdit className="mr-1" /> Manage
+					</Button>
+				</Link>
+			</div>
+		),
+	},
+];
+
+// INVOICES RECORDS
+export const invoices_records_table_header = [
+	{
+		name: "Record ID",
+		selector: "uuid",
+		sortable: false,
+	},
+	{
+		name: "Payment Status",
+		selector: "is_paid",
+		sortable: true,
+		cell: (row) => isPaidStatusBadge(row.is_paid),
+	},
+	{
+		name: "Stripe Receipt URL",
+		selector: "stripe_receipt_url",
+		sortable: true,
+		cell: (row) =>
+			row.stripe_receipt_url ? (
+				<a href={row.stripe_receipt_url} target="_blank" rel="noreferrer">
+					{row.stripe_receipt_url}
+				</a>
+			) : (
+				"N/A"
+			),
+	},
+	{
+		name: "Actions",
+		selector: "id",
+		sortable: false,
+		cell: (row) => (
+			<div className="datatable_actionButtons">
+				<Link to={`/applications/${row.uuid}/show`}>
+					<Button size="sm" variant="light">
+						<FiFileText className="mr-1" /> View Invoice
 					</Button>
 				</Link>
 			</div>

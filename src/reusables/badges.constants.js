@@ -1,5 +1,7 @@
 import { Badge } from "react-bootstrap";
 
+export const isPaidStatusBadge = (bool) => (bool ? <Badge variant="success">Paid</Badge> : <Badge variant="warning">To Pay</Badge>);
+
 export const setPaymentStatusBadge = (paymentLength) => {
 	switch (paymentLength) {
 		case "services-dp-50%":

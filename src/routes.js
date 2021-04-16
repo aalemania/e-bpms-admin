@@ -6,6 +6,9 @@ import { Login, ForgotPassword, VerifyLoginOtp, VerifyOtp } from "./views/authen
 // Applications
 import { ApplicationList, ApplicationCreate, ApplicationShow } from "./views/applications/";
 
+// Invoices
+import { InvoiceList } from "./views/invoices";
+
 const routes = [
 	// Dashboard
 	{ path: "/", exact: true, name: "Dashboard", component: Dashboard },
@@ -54,6 +57,14 @@ const routes = [
 		exact: true,
 		name: "View Application",
 		component: ApplicationShow,
+	},
+
+	// Invoices
+	{
+		path: "/invoices",
+		exact: true,
+		name: "Invoices",
+		component: InvoiceList,
 	},
 
 	// Page not found

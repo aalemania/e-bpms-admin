@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Container, ButtonGroup, Button } from "react-bootstrap";
+import { Container, ButtonGroup, Button, Row, Col } from "react-bootstrap";
 import { FiSliders, FiFileText, FiDownloadCloud, FiTrash2 } from "react-icons/fi";
 
 import {
@@ -15,6 +15,11 @@ import {
 import ApplicationsService from "./../../services/applications.service";
 import PageHeader from "./../../components/PageHeader";
 import PageLoader from "./../../components/PageLoader";
+
+const newDataButtonAttr = {
+	title: "New Application",
+	url: "/application-records/new",
+};
 
 function Show() {
 	document.title = "E-BPMS::View Application";
@@ -36,7 +41,7 @@ function Show() {
 
 	return (
 		<Container fluid className="px-0">
-			<PageHeader title="View Application" />
+			<PageHeader title="View Application" newDataButtonAttr={newDataButtonAttr} />
 
 			<Container fluid className="d-flex px-0 mb-3">
 				<ButtonGroup className="d-none">
@@ -71,14 +76,19 @@ function Show() {
 			{loading && <PageLoader />}
 
 			{!loading && (
-				<>
-					<ApplicationRecordCard data={application} />
-					<ApplicationApplicantCard data={application.applicant_data} user={application.applicant_user} />
-					<ApplicationOwnerCard data={application.owner_data} />
-					<ApplicationPropertyCard data={application.property_data} />
-					<ApplicationProjectCard data={application.project_data} />
-					<ApplicationOthersCard data={application.others_data} />
-				</>
+				<Row>
+					<Col lg={7} className="mx-auto">
+						<h5 className="font-weight-bold mb-3">Application Data</h5>
+						<ApplicationRecordCard data={application} />
+						<ApplicationApplicantCard data={application.applicant_data} user={application.applicant_user} />
+						<ApplicationOwnerCard data={application.owner_data} />
+						<ApplicationPropertyCard data={application.property_data} />
+						<ApplicationProjectCard data={application.project_data} />
+						<ApplicationOthersCard data={application.others_data} />
+					</Col>
+
+					<Col lg={5}></Col>
+				</Row>
 			)}
 		</Container>
 	);
