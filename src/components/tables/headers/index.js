@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
-import { FiEdit, FiTrash2, FiFileText } from "react-icons/fi";
+import { Button, Badge } from "react-bootstrap";
+import { FiEdit, FiFileText } from "react-icons/fi";
 import UserAvatar from "react-user-avatar";
 import Moment from "react-moment";
 
@@ -72,7 +72,12 @@ export const invoices_records_table_header = [
 	{
 		name: "Record ID",
 		selector: "uuid",
-		sortable: false,
+		sortable: true,
+	},
+	{
+		name: "Application ID",
+		selector: "application_record.uuid",
+		sortable: true,
 	},
 	{
 		name: "Payment Status",
@@ -81,16 +86,22 @@ export const invoices_records_table_header = [
 		cell: (row) => isPaidStatusBadge(row.is_paid),
 	},
 	{
+		name: "Payment Type",
+		selector: "payment_for",
+		sortable: true,
+		cell: (row) => setPaymentStatusBadge(row.payment_for),
+	},
+	{
 		name: "Stripe Receipt URL",
 		selector: "stripe_receipt_url",
 		sortable: true,
 		cell: (row) =>
 			row.stripe_receipt_url ? (
 				<a href={row.stripe_receipt_url} target="_blank" rel="noreferrer">
-					{row.stripe_receipt_url}
+					<small>{row.stripe_receipt_url}</small>
 				</a>
 			) : (
-				"N/A"
+				<Badge variant="danger">Not Available</Badge>
 			),
 	},
 	{
@@ -99,7 +110,7 @@ export const invoices_records_table_header = [
 		sortable: false,
 		cell: (row) => (
 			<div className="datatable_actionButtons">
-				<Link to={`/applications/${row.uuid}/show`}>
+				<Link to={`/invoices/${row.uuid}/show`}>
 					<Button size="sm" variant="light">
 						<FiFileText className="mr-1" /> View Invoice
 					</Button>

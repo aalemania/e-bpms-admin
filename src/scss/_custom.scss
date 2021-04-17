@@ -79,6 +79,52 @@ button:disabled {
 	}
 }
 
+.card.invoice-card {
+	padding: 0 !important;
+
+	p {
+		font-size: 0.8rem !important;
+		color: #777 !important;
+		margin-bottom: 0.25rem !important;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		color: #444;
+	}
+
+	.card-body {
+		padding: 0 !important;
+
+		.invoice-header {
+			color: #fff !important;
+			background: #1e1e2d !important;
+			padding: 4rem 2rem !important;
+
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				color: #fff;
+			}
+
+			p {
+				color: #ddd !important;
+			}
+		}
+
+		.invoice-details {
+			padding: 4rem 2rem !important;
+		}
+	}
+}
+
 // Form
 
 form {

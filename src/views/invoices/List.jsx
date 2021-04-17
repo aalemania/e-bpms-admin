@@ -54,7 +54,7 @@ function List() {
 
 	return (
 		<Container fluid className="px-0">
-			<PageHeader title="Applications" breadcrumbStr="Applications \ List" />
+			<PageHeader title="Invoices" />
 
 			<Card>
 				<Card.Header>

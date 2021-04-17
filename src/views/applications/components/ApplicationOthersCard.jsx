@@ -5,7 +5,7 @@ function ApplicationOthersCard({ data }) {
 	return (
 		<Card className="mb-3">
 			<Card.Header>
-				<p>Others Data</p>
+				<p>Company Details Data</p>
 			</Card.Header>
 			<Card.Body>
 				<Form className="normal-form">
@@ -29,6 +29,18 @@ function ApplicationOthersCard({ data }) {
 
 							<Col lg={10}>
 								<input className="form-control" defaultValue={data.client_no} />
+							</Col>
+						</Form.Row>
+					</Form.Group>
+
+					<Form.Group>
+						<Form.Row>
+							<Col lg={2}>
+								<Form.Label>Client Name</Form.Label>
+							</Col>
+
+							<Col lg={10}>
+								<input className="form-control" defaultValue={data.client_name} />
 							</Col>
 						</Form.Row>
 					</Form.Group>
