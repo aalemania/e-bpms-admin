@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Container, ButtonGroup, Button, Card, Image, Col } from "react-bootstrap";
+import { Container, Button, Card, Image, Col } from "react-bootstrap";
 import { FiPrinter, FiMail } from "react-icons/fi";
+
+import { isPaidStatusBadge } from "./../../reusables/badges.constants";
 
 import PageHeader from "./../../components/PageHeader";
 
@@ -64,17 +66,16 @@ function Show() {
 										<h6 className="text-dark" style={{ fontWeight: "500" }}>
 											Invoice
 										</h6>
-										<small>Reference no. &mdash;</small>
+										<small>Invoice no. &mdash;</small>
 										<p>p_zUvPdU1PKV</p>
 										<small>Date issued &mdash;</small>
 										<p>April 18, 2021</p>
+										<small>Payment status &mdash;</small>
+										<p className="mt-1">{isPaidStatusBadge(0)}</p>
 									</div>
 								</Container>
 
-								<br />
-								<br />
-								<br />
-								<br />
+								<div style={{ minHeight: "200px" }}></div>
 
 								<Container fluid className="d-flex">
 									<h6 className="text-secondary">Payment for</h6>
@@ -96,6 +97,23 @@ function Show() {
 									<h5 className="font-weight-bold">Total</h5>
 
 									<h5 className="font-weight-bold ml-auto">QAR 500.00</h5>
+								</Container>
+
+								<br />
+								<br />
+
+								<Container fluid>
+									<small className="text-muted">
+										If you have any questions and/or concerns please contact us at <i>support@e-bpms.site</i>. Lorem ipsum dolor sit amet
+										consectetur adipisicing elit. Mollitia et pariatur assumenda tempora eligendi temporibus?
+									</small>
+								</Container>
+
+								<br />
+								<br />
+
+								<Container fluid>
+									<h5 className="font-weight-bold text-danger text-center text-uppercase">This will be serve as the official receipt</h5>
 								</Container>
 							</Container>
 						</Container>
