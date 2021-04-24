@@ -4,6 +4,7 @@
 	"description": "Qatar building permit system admin dashboard",
 	"license": "MIT",
 	"private": true,
+	"homepage": "https://dashboard.e-bpms.site/",
 	"repository": {
 		"type": "git",
 		"url": "git@github.com:coreui/coreui-free-react-admin-template.git"
