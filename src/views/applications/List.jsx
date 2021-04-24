@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Container, Card, Form, Col, Button, InputGroup } from "react-bootstrap";
 import { FiXCircle, FiSearch } from "react-icons/fi";
@@ -129,7 +130,7 @@ function List() {
 						</Form>
 
 						<Form className="col-lg-6 px-0" onSubmit={handleSearch}>
-							<InputGroup className="col-lg-6 ml-auto">
+							<InputGroup className="col-lg-6 ml-auto mb-2">
 								<input className="form-control" placeholder="Search ..." ref={searchRef} />
 								<InputGroup.Append className="pl-1">
 									<Button variant="light" onClick={handleSearch}>
@@ -137,6 +138,16 @@ function List() {
 									</Button>
 								</InputGroup.Append>
 							</InputGroup>
+
+							<div className="col-lg-6 ml-auto mb-2">
+								<div className="text-right">
+									<Link to="/applications/create">
+										<Button variant="primary">
+											<small>Create Application</small>
+										</Button>
+									</Link>
+								</div>
+							</div>
 						</Form>
 					</div>
 				</Card.Header>

@@ -7,7 +7,7 @@ export const setPaymentStatusBadge = (paymentLength) => {
 		case "services-dp-50%":
 			return <Badge variant="primary">Service Fees Downpayment (50%)</Badge>;
 
-		case "services-db-completion":
+		case "services-dp-completion":
 			return <Badge variant="info">Service Fees Downpayment (Full)</Badge>;
 
 		case "buidling-permit-fees":
