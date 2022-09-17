@@ -1,4 +1,4 @@
-## QATAR Building Permit System Dashboard
+## KIC Building Permit System Dashboard
 
 ### Build with ReactJS (CoreUI)
 
